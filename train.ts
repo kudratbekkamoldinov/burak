@@ -1,8 +1,6 @@
 // TASK-G
-function getHighestIndex(w) {
-  const engkatta = w.slice().sort((a, b) => {
-    return b - a;
-  });
+function getHighestIndex(w: number[]): number {
+  const engkatta = w.slice().sort((a, b) => b - a);
   return w.indexOf(engkatta[0]);
 }
 
