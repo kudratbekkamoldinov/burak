@@ -1,15 +1,15 @@
 // H2-TASK
 function getDigits(a: string): string {
-  let numbers: string[] = [];
+  let nums: string[] = [];
   for (let i = 0; i < a.length; i++) {
     if (!isNaN(parseInt(a[i]))) {
-      numbers.push(a[i]);
+      nums.push(a[i]);
     }
   }
-  return numbers.join("");
+  return nums.join("");
 }
 
-console.log(getDigits("m1312uihryu8qwgtryu123412312312jigaweyu8of"));
+console.log(getDigits("m1312uihryu8qtryu123412312312jigaw8of"));
 
 // // H-TASK
 // function getPositive(a: number[]): string {
