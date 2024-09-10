@@ -10,6 +10,12 @@
 */
 
 
+/* 
+    traditional API
+    Rest API
+    GraphQL API
+ */
+
 
 // // H2-TASK
 // function getDigits(a: string): string {
