@@ -1,15 +1,28 @@
-// H2-TASK
-function getDigits(a: string): string {
-  let nums: string[] = [];
-  for (let i = 0; i < a.length; i++) {
-    if (!isNaN(parseInt(a[i]))) {
-      nums.push(a[i]);
-    }
-  }
-  return nums.join("");
-}
+/* Project Standards:
+  - Logging standards
+  - Naming standards
+      function, method, variable => CAMEL   goHome
+      class => PASCAL                       MemberService
+      folder => KEBAB           
+      css => SNAKE                          button_style
+  - Error handling
 
-console.log(getDigits("m1312uihryu8qtryu123412312312jigaw8of"));
+*/
+
+
+
+// // H2-TASK
+// function getDigits(a: string): string {
+//   let nums: string[] = [];
+//   for (let i = 0; i < a.length; i++) {
+//     if (!isNaN(parseInt(a[i]))) {
+//       nums.push(a[i]);
+//     }
+//   }
+//   return nums.join("");
+// }
+
+// console.log(getDigits("m1312uihryu8qtryu123412312312jigaw8of"));
 
 // // H-TASK
 // function getPositive(a: number[]): string {
