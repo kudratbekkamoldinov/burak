@@ -4,7 +4,6 @@
 
 import dotenv from "dotenv";
 dotenv.config();
-console.log(process.env.MONGO_URl);
 import mongoose from "mongoose";
 import app from "./app";
 

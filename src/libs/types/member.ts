@@ -29,4 +29,7 @@ export interface MemberInput {
 }
 
 
-console.log("Passed here!");
+export interface LoginInput {
+    memberNick: string;
+    memberPassword: string;
+}
