@@ -1,3 +1,13 @@
+function findWord(getWord: string) {
+  return getWord.split(" ").reduce((longest, current) => {
+    return current.length > longest.length ? current : longest;
+  }, "");
+}
+
+const word = "I have passed KIIP 4 test. Congratulations!";
+console.log(findWord(word));
+
+
 // // TASK - I
 // function findMostFrequentNumber(numberArr: number[]) {
 //   const sortedNum: number[] = numberArr.sort((a, b) => a - b);
