@@ -1,12 +1,25 @@
-function findWord(getWord: string) {
-  return getWord.split(" ").reduce((longest, current) => {
-    return current.length > longest.length ? current : longest;
-  }, "");
+// TASK K
+function countVowels(w: string): number {
+  const vowels: string[] = ["a", "e", "i", "o", "u"];
+  let count: number = 0;
+  for (let char of w.toLowerCase()) {
+    if (vowels.includes(char)) {
+      count++;
+    }
+  }
+  return count;
 }
 
-const word = "I have passed KIIP 4 test. Congratulations!";
-console.log(findWord(word));
+console.log(countVowels("I am Joseph!"));
 
+// function findWord(getWord: string) {
+//   return getWord.split(" ").reduce((longest, current) => {
+//     return current.length > longest.length ? current : longest;
+//   }, "");
+// }
+
+// const word = "I have passed KIIP 4 test. Congratulations!";
+// console.log(findWord(word));
 
 // // TASK - I
 // function findMostFrequentNumber(numberArr: number[]) {
@@ -55,7 +68,6 @@ console.log(findWord(word));
   Traditional FD => BSSR (Admin)=> EJS
   Modern FD      => SPA  (User) =>  React
  */
-
 
 // // H2-TASK
 // function getDigits(a: string): string {
