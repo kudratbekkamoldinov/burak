@@ -69,6 +69,20 @@ console.log(countVowels("I am Joseph!"));
   Modern FD      => SPA  (User) =>  React
  */
 
+  /* Coockies
+    reques json
+    self destroy
+ */
+
+/* Validation:
+Frontend validation
+Backend validation
+Database validation
+*/
+
+
+
+
 // // H2-TASK
 // function getDigits(a: string): string {
 //   let nums: string[] = [];
