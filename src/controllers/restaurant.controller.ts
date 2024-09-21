@@ -11,13 +11,22 @@ const restaurantController: T = {};
 restaurantController.goHome = (req: Request, res: Response) => {
   try {
     console.log("goHome");
-    res.render("home.ejs"); // send | render | redirect | json
+    res.render("home"); // send | render | redirect | json
     console.log("afterHome");
   } catch (err) {
     console.log("Error, goHome:", err);
     res.redirect("/admin");
   }
 };
+
+// restaurantController.goHome = (req: Request, res: Response) => {
+//     try {
+//       console.log("goHome");
+//       res.render("home");
+//     } catch (err) {
+//       console.log("Err goHome:", err);
+//     }
+//   };
 
 restaurantController.getSignup = (req: Request, res: Response) => {
   try {

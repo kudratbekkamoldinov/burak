@@ -21,6 +21,9 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(morgan(MORGAN_FORMAT));
+// app.use((req, res, next) => {
+//     console.log("req", req)
+// });
 
 /** 2 - SESSIONS **/
 app.use(
@@ -37,6 +40,7 @@ app.use(
 app.use(function(req, res, next) {
     const sessionInstance = req.session as T;
     res.locals.member = sessionInstance.member;
+    next();
 });
 
 
