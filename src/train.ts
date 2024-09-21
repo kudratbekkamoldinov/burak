@@ -1,16 +1,23 @@
-// TASK K
-function countVowels(w: string): number {
-  const vowels: string[] = ["a", "e", "i", "o", "u"];
-  let count: number = 0;
-  for (let char of w.toLowerCase()) {
-    if (vowels.includes(char)) {
-      count++;
-    }
-  }
-  return count;
-}
+// TASK L 
+function reverseSentence(string: string): string {
+  return string.split(" ").map(word => word.split("").reverse().join("")).join(" ");
 
-console.log(countVowels("I am Joseph!"));
+}
+console.log(reverseSentence("We like Coding!"))
+
+// // TASK K
+// function countVowels(w: string): number {
+//   const vowels: string[] = ["a", "e", "i", "o", "u"];
+//   let count: number = 0;
+//   for (let char of w.toLowerCase()) {
+//     if (vowels.includes(char)) {
+//       count++;
+//     }
+//   }
+//   return count;
+// }
+
+// console.log(countVowels("I am Joseph!"));
 
 // function findWord(getWord: string) {
 //   return getWord.split(" ").reduce((longest, current) => {
