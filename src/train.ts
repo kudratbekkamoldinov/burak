@@ -1,9 +1,19 @@
-// TASK L 
-function reverseSentence(string: string): string {
-  return string.split(" ").map(word => word.split("").reverse().join("")).join(" ");
-
+// TASK-M 
+function getSquareNumbers(numbers: number[]): { number: number; square: number }[] {
+  return numbers.map(num => ({
+      number: num,
+      square: num * num
+  }));
 }
-console.log(reverseSentence("We like Coding!"))
+
+console.log(getSquareNumbers([1, 2, 3, 4, 5, 6]))
+
+// // TASK L 
+// function reverseSentence(string: string): string {
+//   return string.split(" ").map(word => word.split("").reverse().join("")).join(" ");
+
+// }
+// console.log(reverseSentence("We like Coding!"))
 
 // // TASK K
 // function countVowels(w: string): number {
