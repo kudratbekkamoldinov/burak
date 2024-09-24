@@ -43,13 +43,12 @@ productController.createNewProduct = async (
 
     console.log("data", data);
 
-    res.send("Done!");
   } catch (err) {
     console.log("Error, createNewProduct:", err);
     const message =
       err instanceof Errors ? err.message : Message.SOMETHING_WENT_WRONG;
     res.send(
-      `<script> alert("Successful creation!"); window.location.replace('admin/product/all') </script>`
+      `<script> alert("${message}!"); window.location.replace('admin/product/all') </script>`
     );
   }
 };
