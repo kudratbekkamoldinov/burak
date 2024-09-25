@@ -1,12 +1,22 @@
-// TASK-M 
-function getSquareNumbers(numbers: number[]): { number: number; square: number }[] {
-  return numbers.map(num => ({
-      number: num,
-      square: num * num
-  }));
+// TASK-N
+function palindromCheck(givenword: string): boolean {
+  const reverseWord = givenword.split("").reverse().join("");
+  return givenword === reverseWord;
 }
 
-console.log(getSquareNumbers([1, 2, 3, 4, 5, 6]))
+console.log(palindromCheck("boy"));
+
+
+
+// // TASK-M 
+// function getSquareNumbers(numbers: number[]): { number: number; square: number }[] {
+//   return numbers.map(num => ({
+//       number: num,
+//       square: num * num
+//   }));
+// }
+
+// console.log(getSquareNumbers([1, 2, 3, 4, 5, 6]))
 
 // // TASK L 
 // function reverseSentence(string: string): string {
