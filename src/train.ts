@@ -1,10 +1,23 @@
-// TASK-N
-function palindromCheck(givenword: string): boolean {
-  const reverseWord = givenword.split("").reverse().join("");
-  return givenword === reverseWord;
+// TASK O 
+function calculateSumOfNumbers(array: any[]):number {
+  return array.reduce((sum: number, i: any) => {
+    if (typeof i === 'number') {
+      return sum + i
+    }
+    return sum
+  }, 0);
 }
 
-console.log(palindromCheck("boy"));
+
+console.log(calculateSumOfNumbers([11, "10", {son: 10}, true, 35]));
+
+// // TASK-N
+// function palindromCheck(givenword: string): boolean {
+//   const reverseWord = givenword.split("").reverse().join("");
+//   return givenword === reverseWord;
+// }
+
+// console.log(palindromCheck("boy"));
 
 
 
