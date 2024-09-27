@@ -85,13 +85,13 @@ console.log(palindromCheck("boy"));
 
 */
 
-/* 
-    traditional API
+/* Requests:
+    traditional API (form POST)
     Rest API
     GraphQL API
  */
 
-/*
+/* Frontend development
   Traditional FD => BSSR (Admin)=> EJS
   Modern FD      => SPA  (User) =>  React
  */
