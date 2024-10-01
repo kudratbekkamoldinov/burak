@@ -114,10 +114,11 @@ console.log(calculateSumOfNumbers([11, "10", {son: 10}, true, 35]));
     self destroy
  */
 
-/* Validation:
-Frontend validation
-Backend validation
-Database validation
+/* Validation: VALIDATION: CLIENT vs DTO vs SERVER vs SCHEMA
+Client validation
+DTO validation
+Server validation
+Schema validation
 */
 
 
