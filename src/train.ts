@@ -1,9 +1,22 @@
-// TASK P 
-function objectToArray(obj: Record<string, any>): [string, any][] {
-  return Object.entries(obj);
+// TASK Q 
+function hasProperty(object: object, string: string): boolean {
+  
+  if(Object.keys(object).includes(string)) {
+    return true;
+  } else {
+    return false
+  }
 }
 
-console.log(objectToArray({a: 10, b: 20}));
+console.log(hasProperty({ name: "BMW", model: "M3" }, "name"));
+
+
+// // TASK P 
+// function objectToArray(obj: Record<string, any>): [string, any][] {
+//   return Object.entries(obj);
+// }
+
+// console.log(objectToArray({a: 10, b: 20}));
 
 // // TASK O 
 // function calculateSumOfNumbers(array: any[]):number {
