@@ -1,14 +1,23 @@
-// TASK Q 
-function hasProperty(object: object, string: string): boolean {
-  
-  if(Object.keys(object).includes(string)) {
-    return true;
-  } else {
-    return false
-  }
+// TASK R 
+function calculate(string: string) {
+  const numbers = string.split('+').map(Number);
+  const sum = numbers.reduce((acc, curr) => acc + curr, 0);
+  return sum;
 }
 
-console.log(hasProperty({ name: "BMW", model: "M3" }, "name"));
+console.log(calculate("1 + 9"));
+
+// // TASK Q 
+// function hasProperty(object: object, string: string): boolean {
+  
+//   if(Object.keys(object).includes(string)) {
+//     return true;
+//   } else {
+//     return false
+//   }
+// }
+
+// console.log(hasProperty({ name: "BMW", model: "M3" }, "name"));
 
 
 // // TASK P 

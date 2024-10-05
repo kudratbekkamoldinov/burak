@@ -22,7 +22,8 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(morgan(MORGAN_FORMAT));
 // app.use((req, res, next) => {
-//     console.log("req", req)
+//     console.log(req.method, req.url, res.statusCode);
+//     next();
 // });
 
 /** 2 - SESSIONS **/
