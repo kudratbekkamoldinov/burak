@@ -1,11 +1,23 @@
-// TASK R 
-function calculate(string: string) {
-  const numbers = string.split('+').map(Number);
-  const sum = numbers.reduce((acc, curr) => acc + curr, 0);
-  return sum;
+// TASK S 
+function missingNumber(nums: number[]): number {
+  const n: number = nums.length;
+  const expectedSum: number = (n * (n + 1)) / 2;
+  const actualSum: number = nums.reduce((sum, num) => sum + num, 0);
+  return expectedSum - actualSum;
 }
 
-console.log(calculate("1 + 9"));
+console.log(missingNumber([9, 6, 4, 2, 3, 5, 7, 0, 1]));
+
+
+
+// // TASK R 
+// function calculate(string: string) {
+//   const numbers = string.split('+').map(Number);
+//   const sum = numbers.reduce((acc, curr) => acc + curr, 0);
+//   return sum;
+// }
+
+// console.log(calculate("1 + 9"));
 
 // // TASK Q 
 // function hasProperty(object: object, string: string): boolean {
