@@ -1,11 +1,37 @@
-// TASK T 
-function mergeSortedArrays(arr1: number[], arr2: number[]): number[] {
-  return [...arr1, ...arr2].sort((a, b) => a - b);
+// U-Task
+function sumOdds(number: number): Promise<number> {
+  const numbers: number[] = [];
+  const rnumbers: number[] = [];
+  return new Promise((resolse) => {
+    let count: number = 0;
+    const set = setInterval(() => {
+      count++;
+      numbers.push(count);
+      if (count === number) {
+        clearInterval(set);
+        numbers.map((ele) => {
+          if (ele % 2 !== 0) {
+            return rnumbers.push(ele);
+          }
+          return ele;
+        });
+        resolse(rnumbers.length - 1);
+      }
+    });
+  });
 }
+sumOdds(10).then((result) => {
+  console.log(result);
+});
 
-console.log(mergeSortedArrays([0, 3, 4, 31], [4, 6, 30]));
+// // TASK T
+// function mergeSortedArrays(arr1: number[], arr2: number[]): number[] {
+//   return [...arr1, ...arr2].sort((a, b) => a - b);
+// }
 
-// // TASK S 
+// console.log(mergeSortedArrays([0, 3, 4, 31], [4, 6, 30]));
+
+// // TASK S
 // function missingNumber(nums: number[]): number {
 //   const n: number = nums.length;
 //   const expectedSum: number = (n * (n + 1)) / 2;
@@ -15,9 +41,7 @@ console.log(mergeSortedArrays([0, 3, 4, 31], [4, 6, 30]));
 
 // console.log(missingNumber([9, 6, 4, 2, 3, 5, 7, 0, 1]));
 
-
-
-// // TASK R 
+// // TASK R
 // function calculate(string: string) {
 //   const numbers = string.split('+').map(Number);
 //   const sum = numbers.reduce((acc, curr) => acc + curr, 0);
@@ -26,9 +50,9 @@ console.log(mergeSortedArrays([0, 3, 4, 31], [4, 6, 30]));
 
 // console.log(calculate("1 + 9"));
 
-// // TASK Q 
+// // TASK Q
 // function hasProperty(object: object, string: string): boolean {
-  
+
 //   if(Object.keys(object).includes(string)) {
 //     return true;
 //   } else {
@@ -38,15 +62,14 @@ console.log(mergeSortedArrays([0, 3, 4, 31], [4, 6, 30]));
 
 // console.log(hasProperty({ name: "BMW", model: "M3" }, "name"));
 
-
-// // TASK P 
+// // TASK P
 // function objectToArray(obj: Record<string, any>): [string, any][] {
 //   return Object.entries(obj);
 // }
 
 // console.log(objectToArray({a: 10, b: 20}));
 
-// // TASK O 
+// // TASK O
 // function calculateSumOfNumbers(array: any[]):number {
 //   return array.reduce((sum: number, i: any) => {
 //     if (typeof i === 'number') {
@@ -55,7 +78,6 @@ console.log(mergeSortedArrays([0, 3, 4, 31], [4, 6, 30]));
 //     return sum
 //   }, 0);
 // }
-
 
 // console.log(calculateSumOfNumbers([11, "10", {son: 10}, true, 35]));
 
@@ -67,9 +89,7 @@ console.log(mergeSortedArrays([0, 3, 4, 31], [4, 6, 30]));
 
 // console.log(palindromCheck("boy"));
 
-
-
-// // TASK-M 
+// // TASK-M
 // function getSquareNumbers(numbers: number[]): { number: number; square: number }[] {
 //   return numbers.map(num => ({
 //       number: num,
@@ -79,7 +99,7 @@ console.log(mergeSortedArrays([0, 3, 4, 31], [4, 6, 30]));
 
 // console.log(getSquareNumbers([1, 2, 3, 4, 5, 6]))
 
-// // TASK L 
+// // TASK L
 // function reverseSentence(string: string): string {
 //   return string.split(" ").map(word => word.split("").reverse().join("")).join(" ");
 
@@ -157,7 +177,7 @@ console.log(mergeSortedArrays([0, 3, 4, 31], [4, 6, 30]));
   Modern FD      => SPA  (User) =>  React
  */
 
-  /* Coockies
+/* Coockies
     reques json
     self destroy
  */
@@ -168,9 +188,6 @@ DTO validation
 Server validation
 Schema validation
 */
-
-
-
 
 // // H2-TASK
 // function getDigits(a: string): string {
