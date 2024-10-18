@@ -1,12 +1,29 @@
-// TASK X 
+// TASK X
 function countOccurrences(object: object, string: string) {
-  let stringcount = 0
-  for ()
+  const result: string[] = [];
+  const keys = Object.keys(object).concat(Object.values(object));
+  keys.map((ele) => {
+    if (typeof ele === "string") {
+      if (ele === string) {
+        return result.push(ele);
+      }
+      return ele;
+    }
+    return Object.keys(ele).map((ele) => {
+      if (ele === string) {
+        return result.push(ele);
+      }
+      return ele;
+    });
+  }); return result.length;
 }
 
-
-
-console.log(countOccurrences({model: 'Bugatti', steer: {model: 'HANKOOK', size: 30}}, 'model'));
+console.log(
+  countOccurrences(
+    { model: "Bugatti", steer: { model: "HANKOOK", size: 30 }},
+    "model"
+  )
+);
 
 // // W-Task
 
@@ -25,14 +42,10 @@ console.log(countOccurrences({model: 'Bugatti', steer: {model: 'HANKOOK', size: 
 // }
 // console.log(chunkArray([1, 2, 3, 4, 5, 7,  9], 3));
 
-
-
-
-
-// // TASK V 
+// // TASK V
 // function countChars(str: string): { [key: string]: number } {
 //   const charCount: { [key: string]: number } = {};
-  
+
 //   for (let char of str) {
 //     if (charCount[char]) {
 //       charCount[char]++;
@@ -40,13 +53,11 @@ console.log(countOccurrences({model: 'Bugatti', steer: {model: 'HANKOOK', size: 
 //       charCount[char] = 1;
 //     }
 //   }
-  
+
 //   return charCount;
 // }
 
 // console.log(countChars("programming"));
-
-
 
 // // U-Task
 // function sumOdds(number: number): Promise<number> {

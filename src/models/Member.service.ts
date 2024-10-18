@@ -21,7 +21,7 @@ class MemberService {
 
   public async getRestaurant(): Promise<Member> {
     const result = await this.memberModel
-      .findOne({ MemberType: MemberType.RESTAURANT })
+      .findOne({ memberType: MemberType.RESTAURANT })
       .lean()
       .exec();
     result.target = "Test";
@@ -104,12 +104,12 @@ class MemberService {
         memberStatus: MemberStatus.ACTIVE,
         memberPoints: { $gte: 1 },
       })
-      .sort({ memberPoints: +1 })
+      .sort({ memberPoints: -1 })
       .limit(4)
       .exec();
     if (!result) throw new Errors(HttpCode.NOT_FOUND, Message.NO_DATA_FOUND);
 
-    // console.log("result: ", result);
+    console.log("result: ", result);
     return result;
   }
 
