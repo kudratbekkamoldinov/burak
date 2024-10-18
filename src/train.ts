@@ -1,19 +1,29 @@
-// W-Task
-
-function chunkArray(numbers: number[], num: number) {
-  const flex: number = parseInt(`${numbers.length / num}`);
-  const result: any = [];
-  for (let i = 0; i < numbers.length; i++) {
-    if (numbers.length > flex) {
-      result.push(numbers.slice(0, flex));
-      numbers.splice(0, flex);
-    }
-  }
-  result.push(numbers.slice(0, numbers.length));
-
-  return result;
+// TASK X 
+function countOccurrences(object: object, string: string) {
+  let stringcount = 0
+  for ()
 }
-console.log(chunkArray([1, 2, 3, 4, 5, 7,  9], 3));
+
+
+
+console.log(countOccurrences({model: 'Bugatti', steer: {model: 'HANKOOK', size: 30}}, 'model'));
+
+// // W-Task
+
+// function chunkArray(numbers: number[], num: number) {
+//   const flex: number = parseInt(`${numbers.length / num}`);
+//   const result: any = [];
+//   for (let i = 0; i < numbers.length; i++) {
+//     if (numbers.length > flex) {
+//       result.push(numbers.slice(0, flex));
+//       numbers.splice(0, flex);
+//     }
+//   }
+//   result.push(numbers.slice(0, numbers.length));
+
+//   return result;
+// }
+// console.log(chunkArray([1, 2, 3, 4, 5, 7,  9], 3));
 
 
 
