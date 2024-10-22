@@ -11,6 +11,7 @@ import {
   ExtendedRequest,
   MemberUpdateInput,
 } from "../libs/types/member";
+import productController from "./product.controller";
 
 // Bu react loyiha uchun
 
@@ -18,6 +19,9 @@ const memberService = new MemberService();
 const authService = new AuthService();
 
 const memberController: T = {};
+
+
+
 
 memberController.getRestaurant = async (req: Request, res: Response) => {
   try {
