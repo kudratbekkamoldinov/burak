@@ -61,7 +61,7 @@ const productSchema = new Schema(
       default: 0,
     },
   },
-  { timestamps: true } // updatedAt, cretedAt
+  { timestamps: true, collection: "members" } // updatedAt, cretedAt
 );
 productSchema.index({ productName: 1, ProductVolume: 1 }, { unique: true });
 export default mongoose.model("Product", productSchema);
