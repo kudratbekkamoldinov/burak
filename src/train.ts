@@ -1,29 +1,43 @@
-// TASK X
-function countOccurrences(object: object, string: string) {
-  const result: string[] = [];
-  const keys = Object.keys(object).concat(Object.values(object));
-  keys.map((ele) => {
-    if (typeof ele === "string") {
-      if (ele === string) {
-        return result.push(ele);
-      }
-      return ele;
+// TASK Z
+function sumEvens(numbers: number[]): number {
+  let sum: number = 0;
+  for (let i: number = 0; i < numbers.length; i++) {
+    if (numbers[i] % 2 === 0) {
+      sum += numbers[i];
     }
-    return Object.keys(ele).map((ele) => {
-      if (ele === string) {
-        return result.push(ele);
-      }
-      return ele;
-    });
-  }); return result.length;
+  }
+  return sum;
 }
 
-console.log(
-  countOccurrences(
-    { model: "Bugatti", steer: { model: "HANKOOK", size: 30 }},
-    "model"
-  )
-);
+console.log(sumEvens([1, 2, 3]));
+
+
+// // TASK X
+// function countOccurrences(object: object, string: string) {
+//   const result: string[] = [];
+//   const keys = Object.keys(object).concat(Object.values(object));
+//   keys.map((ele) => {
+//     if (typeof ele === "string") {
+//       if (ele === string) {
+//         return result.push(ele);
+//       }
+//       return ele;
+//     }
+//     return Object.keys(ele).map((ele) => {
+//       if (ele === string) {
+//         return result.push(ele);
+//       }
+//       return ele;
+//     });
+//   }); return result.length;
+// }
+
+// console.log(
+//   countOccurrences(
+//     { model: "Bugatti", steer: { model: "HANKOOK", size: 30 }},
+//     "model"
+//   )
+// );
 
 // // W-Task
 

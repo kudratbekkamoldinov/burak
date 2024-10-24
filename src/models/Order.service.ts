@@ -1,4 +1,4 @@
-import { Order, OrderInquiry, OrderItemInput } from "../libs/types/order";
+import { Order, OrderInquiry, OrderItemInput, OrderUpdateInput } from "../libs/types/order";
 import { Member } from "../libs/types/member";
 import OrderModel from "../schema/Order.model";
 import OrderItemModel from "../schema/OrderItem.model";
@@ -7,6 +7,7 @@ import Errors, { HttpCode, Message } from "../libs/Errors";
 import { ObjectId } from "mongoose";
 import { OrderStatus } from "../libs/enums/order.enum";
 import MemberService from "./Member.service";
+import MemberModel from "../schema/Member.model";
 
 class OrderService {
   private readonly orderModel;
@@ -17,7 +18,6 @@ class OrderService {
     this.orderModel = OrderModel;
     this.orderItemModel = OrderItemModel;
     this.memberService = new MemberService();
-    
   }
 
   public async createOrder(
@@ -69,29 +69,59 @@ class OrderService {
     inquiry: OrderInquiry
   ): Promise<Order[]> {
     const memberId = shapeIntoMongooseObjectId(member._id);
-    const matches = {memberId: memberId, orderStatus: inquiry.orderStatus };
+    const matches = { memberId: memberId, orderStatus: inquiry.orderStatus };
 
-    const result = await this.orderModel.aggregate([ { $match: matches }, {$sort: {updateAt: -1}}, {$skip (inquiry.page -1) * inquiry.limit}, {$limit: inquiry.limit}, {$lookup: {from: "orderItems", localField: "_id", foreignField: "orderId", as: "orderItems",},}, {$lookup: { from: "products", localField: "orderItems.productId", foreigField: "_id", as: "productData"}},]).exec();
+    const result = await this.orderModel
+      .aggregate([
+        { $match: matches },
+        { $sort: { updatedAt: -1 } },
+        { $skip: (inquiry.page - 1) * inquiry.limit },
+        { $limit: inquiry.limit },
+        {
+          $lookup: {
+            from: "orderItems",
+            localField: "_id",
+            foreignField: "orderId",
+            as: "orderItems",
+          },
+        },
+        {
+          $lookup: {
+            from: "products",
+            localField: "orderItems.productId",
+            foreignField: "_id",
+            as: "productData",
+          },
+        },
+      ])
+      .exec();
     if (!result) throw new Errors(HttpCode.NOT_FOUND, Message.NO_DATA_FOUND);
 
     return result;
   }
 
-  public async updateOrder(member: MemberModel, input: OrderUpdateInput): Promise<Order> {
+  public async updateOrder(
+    member: Member,
+    input: OrderUpdateInput
+  ): Promise<Order> {
     const memberId = shapeIntoMongooseObjectId(member._id);
     const orderId = shapeIntoMongooseObjectId(input.orderId);
-    orderStatus = input.orderStatus;
-    const result = await this.orderModel.findOneAndUpdate({memberId: memberId, _id: OrderItemModel,}, {orderStatus: orderService}, {new: true}).exec();
-    
+    const orderStatus = input.orderStatus;
+    const result = await this.orderModel
+      .findOneAndUpdate(
+        { memberId: memberId, _id: orderId },
+        { orderStatus: OrderStatus},
+        { new: true }
+      )
+      .exec();
+
     if (!result) throw new Errors(HttpCode.NOT_MODIFIED, Message.UPDATE_FAILED);
 
     // order status PAUSE => PROCESS
-    if(orderStatus === OrderStatus.PROCESS) {
-        await this.memberService.addUserPoint(member, 1);
+    if (orderStatus === OrderStatus.PROCESS) {
+      await this.memberService.addUserPoint(member, 1);
     }
     return result;
-
-
   }
 }
 
