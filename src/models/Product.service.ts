@@ -28,7 +28,9 @@ class ProductService {
 
   public async getProducts(inquiry: ProductInquiry): Promise<Product[]> {
     console.log("inquiry:", inquiry);
+
     const match: T = { productStatus: ProductStatus.PROCESS };
+    console.log("match:", match);
 
     if (inquiry.productCollection)
       match.productCollection = inquiry.productCollection;
@@ -36,11 +38,12 @@ class ProductService {
       match.productName = { $regex: new RegExp(inquiry.search, "i") };
     }
 
+    console.log("mtach 2:", match);
     const sort: T =
       inquiry.order === "productPrice"
         ? { [inquiry.order]: 1 }
         : { [inquiry.order]: -1 };
-
+    console.log("sort:", sort);
     const result = await this.productModel
       .aggregate([
         { $match: match },
@@ -49,8 +52,9 @@ class ProductService {
         { $limit: inquiry.limit * 1 },
       ])
       .exec();
-
+    console.log("result:", result);
     if (!result) throw new Errors(HttpCode.NOT_FOUND, Message.NO_DATA_FOUND);
+
     return result;
   }
 
@@ -59,7 +63,7 @@ class ProductService {
     id: string
   ): Promise<Product> {
     const productId = shapeIntoMongooseObjectId(id);
-
+    console.log("pid:", productId);
     let result = await this.productModel
       .findOne({
         _id: productId,
@@ -67,6 +71,7 @@ class ProductService {
       })
       .exec();
     if (!result) throw new Errors(HttpCode.NOT_FOUND, Message.NO_DATA_FOUND);
+    console.log("74", result);
 
     // TODO: If authenticated users => first => view creation
 
@@ -78,8 +83,7 @@ class ProductService {
         viewGroup: ViewGroup.PRODUCT,
       };
       const existView = await this.viewService.checkViewExistence(input);
-
-      
+      console.log("existview", existView);
       console.log("exist:", existView);
       if (!existView) {
         // Insert View
@@ -90,11 +94,13 @@ class ProductService {
         result = await this.productModel
           .findByIdAndUpdate(
             productId,
-            { $inc: { productViews: + 1 } },
+            { $inc: { productViews: +1 } },
             { new: true }
           )
           .exec();
+        
       }
+      console.log("result", result);
     }
 
     return result;
@@ -118,13 +124,13 @@ class ProductService {
     }
   }
 
-  public async updateChoosenProduct(
+  public async updateChosenProduct(
     id: string,
     input: ProductUpdateInput
   ): Promise<Product> {
     id = shapeIntoMongooseObjectId(id);
     const result = await this.productModel
-      .findOneAndUpdate({ _id: id }, input, { new: true })
+      .findByIdAndUpdate({ _id: id }, input, { new: true })
       .exec();
     if (!result) throw new Errors(HttpCode.NOT_MODIFIED, Message.UPDATE_FAILED);
 

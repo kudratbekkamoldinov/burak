@@ -1,15 +1,14 @@
 import express from "express";
 const router = express.Router();
 import memberController from "./controllers/member.controller";
-import { v4 } from "uuid";
 import uploader from "./libs/utils/uploader";
 import productController from "./controllers/product.controller";
 import orderController from "./controllers/order.controller";
 
 /** Member */
 router.get("/member/restaurant", memberController.getRestaurant);
-router.post("/member/login", memberController.login);
 router.post("/member/signup", memberController.signup);
+router.post("/member/login", memberController.login);
 router.post(
   "/member/logout",
   memberController.verifyAuth,
@@ -32,9 +31,8 @@ router.get("/member/top-users", memberController.getTopUsers);
 /** Product */
 router.get("/product/all", productController.getProducts);
 router.get(
-  "/product/:id",
-  memberController.retrieveAuth,
-  productController.getProduct
+  "/product/:id", memberController.retriveAuth,
+  productController.getProduct, 
 );
 
 /** Order */

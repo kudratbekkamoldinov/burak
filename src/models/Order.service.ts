@@ -107,6 +107,7 @@ class OrderService {
     const memberId = shapeIntoMongooseObjectId(member._id);
     const orderId = shapeIntoMongooseObjectId(input.orderId);
     const orderStatus = input.orderStatus;
+    console.log("memberorderfjaifhieahfi,", memberId, orderId, orderStatus);
     const result = await this.orderModel
       .findOneAndUpdate(
         { memberId: memberId, _id: orderId },

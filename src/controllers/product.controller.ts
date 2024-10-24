@@ -20,18 +20,15 @@ productController.getProducts = async (req: Request, res: Response) => {
       page: Number(page),
       limit: Number(limit),
     };
-
-    if (productCollection) {
+    if (productCollection)
       inquiry.productCollection = productCollection as ProductCollection;
-    }
 
     if (search) inquiry.search = String(search);
 
     const result = await productService.getProducts(inquiry);
-
     res.status(HttpCode.OK).json(result);
   } catch (err) {
-    console.log("Error, getProducts:", err);
+    console.log("Error, getProducts", err);
     if (err instanceof Errors) res.status(err.code).json(err);
     else res.status(Errors.standard.code).json(Errors.standard);
   }
@@ -81,7 +78,7 @@ productController.createNewProduct = async (
 
     const data: ProductInput = req.body;
     data.productImages = req.files?.map((ele) => {
-      return ele.path;
+      return ele.path.replace(/\\/g, "/");
     });
 
     await productService.createNewProduct(data);
@@ -106,7 +103,7 @@ productController.updateChosenProduct = async (req: Request, res: Response) => {
     console.log("updateChosenProduct");
     const id = req.params.id;
 
-    const result = await productService.updateChoosenProduct(id, req.body);
+    const result = await productService.updateChosenProduct(id, req.body);
 
     res.status(HttpCode.OK).json({ data: result });
   } catch (err) {
