@@ -4,6 +4,7 @@ import memberController from "./controllers/member.controller";
 import { v4 } from "uuid";
 import uploader from "./libs/utils/uploader";
 import productController from "./controllers/product.controller";
+import orderController from "./controllers/order.controller";
 
 /** Member */
 router.get("/member/restaurant", memberController.getRestaurant);
@@ -30,8 +31,17 @@ router.get("/member/top-users", memberController.getTopUsers);
 
 /** Product */
 router.get("/product/all", productController.getProducts);
-router.get("/product/:id", memberController.retrieveAuth, productController.getProduct);
+router.get(
+  "/product/:id",
+  memberController.retrieveAuth,
+  productController.getProduct
+);
 
 /** Order */
+router.post(
+  "/order/create",
+  memberController.verifyAuth,
+  orderController.createOrder
+);
 
 export default router;
